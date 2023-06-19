@@ -25,7 +25,6 @@ public class CursoServiceImpl implements CursoService {
     private CursoRepository cursoRepository;
 
 
-    // TODO: HACER UNA ULTIMA PRUEBITA
     @Override
     public ResponseDto getAllCursos() {
 
@@ -105,6 +104,12 @@ public class CursoServiceImpl implements CursoService {
             if ( cursoEntityFound == null ) {
                 return Util.getResponse( true, Constantes.NO_RECORDS_FOUND, null );
             }
+
+            // System.out.println( "Ids encontrados de alumnos: " );
+
+            // for ( CursoAlumnoEntity cursoAlumnoEntity : cursoEntityFound.getListCursoAlumnoEntity() ) {
+            //     System.out.println( "-> " + cursoAlumnoEntity.getId_alumno() );
+            // }
 
             CursoDto cursoDto = CursoDto.builder()
                 .id( cursoEntityFound.getId() )

@@ -1,10 +1,14 @@
 package com.edu.certus.mscurso.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -31,4 +35,8 @@ public class CursoEntity {
     @Column( name = "estado" )
     private boolean estado;
     
+    @JoinColumn(name = "id_curso", referencedColumnName = "cod_curso", insertable = false, updatable = false)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+	private CursoAlumnoEntity alumnoCursoEntity;
+
 }
